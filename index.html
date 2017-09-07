@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Stencil: A Compiler for Web Components</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -24,8 +24,70 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Stencil</h1>
+					<h2>A compiler for building fast, capable Web Components</h2>
+					<h5><a href="http://stenciljs.com/">stenciljs.com</a></h5>
+				</section>
+				<section>
+					<h2>What is Stencil?</h2>
+					<ul>
+						<li>A compiler that generates Custom Elements, part of the Web Components spec</li>
+						<li>Not a framework: output is 100% standards-compliant Custom Elements</li>
+						<li>Adds powerful framework features to Web Components</li>
+						<li>Created and used heavily by the <a href="http://ionicframework.com/">Ionic Framework</a> team. Ionic 4+ is built on it!</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Why Stencil?</h2>
+					<ul>
+						<li><b>Performance</b>: Traditional frameworks proving too heavy for demanding mobile Progressive Web Applications</li>
+						<li><b>Stability</b>: Desire to use web standards and avoid constant framework churn</li>
+						<li><b>Interoperability</b>: Ability to create components that work across all major frameworks.</li>
+						<li><b>Familiarity</b>: features from frameworks but in a leaner, standards-compliant package</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Example Stencil Component</h2>
+					<pre><code data-trim data-noescape class="typescript">
+						import { Component, Prop } from '@stencil/core';
+
+						@Component({
+						  tag: 'my-name',
+						  styleUrl: 'my-name.scss'
+						})
+						export class MyName {
+						  @Prop() name: string;
+
+						  render() {
+						    return (
+						      &lt;p&gt;
+						        Hello, my name is {this.name}
+						      &lt;/p&gt;
+						    );
+						  }
+						}
+					</code></pre>
+				</section>
+				<section>
+					<h2>What's in a Stencil-compiled component?</h2>
+					<ul>
+						<li><b>Virtual DOM</b>: fast DOM updates without common DOM performance pitfalls</li>
+
+						<li><b>Lazy Loading</b>: By default components load asyncronously and can be bundled for related components</li>
+						<li><b>JSX</b>: Popular and familiar markup system pioneered by React</li>
+						<li><b>Server Side Rendering</b>: Hydrate pre-compiled components on the server without a headless browser</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Getting Started</h2>
+					<pre><code data-trim data-noescape class="bash">
+						git clone https://github.com/ionic-team/stencil-starter.git my-app
+						cd my-app
+						npm install
+						npm start
+					</code></pre>
+				</section>
 			</div>
 		</div>
 
