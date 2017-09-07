@@ -26,9 +26,9 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>
-					<h1>Stencil</h1>
-					<h4>A compiler for building fast, reactive Web Components</h4>
+				<section data-background="#ffffff">
+					<h1><img id="logo" src="img/stencil-logo.svg" /></h1>
+					<h4 id="lead-text">A simple compiler for fast,<br />reactive Web Components</h4>
 					<h5><a href="http://stenciljs.com/">stenciljs.com</a></h5>
 				</section>
 				<section>
@@ -72,12 +72,17 @@
 					</code></pre>
 				</section>
 				<section>
-					<h2>What's in a Stencil-compiled component?</h2>
+					<h2>Stencil-compiled Components have</h2>
 					<ul>
 						<li><b>Virtual DOM</b>: fast DOM updates without common DOM performance pitfalls</li>
-						<li><b>Lazy Loading</b>: By default components load asyncronously and can be bundled for related components</li>
+						<li><b>Lazy Loading</b>: By default components load asyncronously and can be bundled with related components</li>
 						<li><b>Change Detection</b>: Efficient updates based on property and state changes</li>
-						<li><b>Optimized Rendering</b>: async rendering queue, similar to React Fiber</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Stencil-compiled Components have (cont.)</h2>
+					<ul>
+						<li><b>High-performance Rendering</b>: async rendering system, similar to React Fiber</li>
 						<li><b>JSX</b>: Popular and familiar markup system pioneered by React</li>
 						<li><b>Server Side Rendering</b>: Hydrate pre-compiled components on the server without a headless browser</li>
 					</ul>
@@ -94,7 +99,7 @@
 				<section>
 					<h2>Stencil API</h2>
 					<ul>
-						<li><b>@Component</b>: set tag name and associated stylesheet (Sass or plain CSS)</li>
+						<li><b>@Component()</b>: set tag name and associated stylesheet (Sass or plain CSS)</li>
 						<li><b>@Prop()</b>: Create a property on the component</li>
 						<li><b>@State()</b>: local state that should be watched during change detection</li>
 						<li><b>@Listen()</b>: listen for events fired from children</li>
