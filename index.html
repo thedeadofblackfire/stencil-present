@@ -6,13 +6,15 @@
 
 		<title>Stencil: A Compiler for Web Components</title>
 
+		<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
 		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/dracula.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -104,6 +106,14 @@
 						<li><b>@State()</b>: local state that should be watched during change detection</li>
 						<li><b>@Listen()</b>: listen for events fired from children</li>
 						<li><b>@Element()</b>: grab the DOM element for this component</li>
+					</ul>
+				</section>
+				<section>
+					<h2>How is Stencil different from X?</h2>
+					<ul>
+						<li><b>Angular/React/Vue/etc.</b>: Stencil builds standards-based web components that run natively in the browser.</li>
+						<li><b>Polymer</b>: Stencil works primarily at build rather than runtime. Outputs vanilla web components. Opinionated around JSX, Virtual DOM, and other framework features.</li>
+						<li><b>Vanilla Web Components</b>: Stencil provides complicated framework features as if you wrote them yourself in vanilla Web Components.</li>
 					</ul>
 				</section>
 				<section>
