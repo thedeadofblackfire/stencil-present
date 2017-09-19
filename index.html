@@ -34,6 +34,58 @@
 					<h5><a href="http://stenciljs.com/">stenciljs.com</a></h5>
 				</section>
 				<section>
+					<h2>Outline</h2>
+					<ul>
+						<li>Introduction to Web Components</li>
+						<li>Introduction to Stencil</li>
+						<li>Stencil API</li>
+						<li>Demo time</li>
+						<li>Where to go next</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Web Components</h2>
+					<ul>
+						<li>Natively-supported custom JavaScript components</li>
+						<li>Standardized component model</li>
+						<li>Run in every framework or on their own</li>
+						<li>Answer to the shared-component problem</li>
+						<li>Powered by the Custom Element spec</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Custom Element Example</h2>
+					<pre><code data-trim data-noescape class="html">
+&lt;my-component size="large" theme="light"/&gt;&lt;/my-component&gt;
+					</code></pre>
+				</section>
+				<section>
+					<h2>Custom Element Example</h2>
+					<pre><code data-trim data-noescape class="typescript">
+class MyComponent extends HTMLElement {
+	createdCallback() {
+		// Standard DOM/fetch/etc. code...
+	}
+	attachedCallback() {}
+	detachedCallback() {}
+	attributeChangedCallback() {}
+}
+
+document.registerElement('my-component', MyComponent);
+					</code></pre>
+				</section>
+				<section>
+					<h2>Can we make it easier to build Custom Elements?</h2>
+					<ul>
+						<li>Still want framework features</li>
+						<li>Desire to manage bundles of components</li>
+						<li>Many teams are choosing TypeScript</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Stencil: A Compiler for Web Components</h2>
+				</section>
+				<section>
 					<h2>What is Stencil?</h2>
 					<ul>
 						<li>A compiler that generates Custom Elements, part of the Web Components spec</li>
@@ -101,6 +153,12 @@
 					</ul>
 				</section>
 				<section>
+					<h2>Demo time</h2>
+					<p>
+						May the demo gods be with us
+					</p>
+				</section>
+				<section>
 					<h2>How is Stencil different from X?</h2>
 					<ul>
 						<li><b>Angular/React/Vue/etc.</b>: Stencil builds standards-based web components that run natively in the browser.</li>
@@ -140,7 +198,7 @@
 						<li><a target="_blank" href="https://alligator.io/stencil/getting-started/">Getting Started With Stencil</a></li>
 						<li><a target="_blank" href="https://medium.com/@sinedied/stencil-js-its-finally-time-for-vanilla-web-components-927d26b573e1">Stencil.js: It's finally time for vanilla web components!</a></li>
 					</ul>
-				</section>
+			</section>
 				<section>
 					<h2>Thanks!</h2>
 					<ul>
