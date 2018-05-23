@@ -28,6 +28,9 @@
 		:root {
 		  --present-color-li: #36A0D9;
 		  }
+		  .reveal h2 {
+		  margin-bottom:30px;
+		  }
 		</style>
 		
 	</head>
@@ -54,21 +57,33 @@
 						<li>Ressources</li>
 					</ul>
 				</section>
+				<section>		
+					<h2>Prélude</h2>
+					<h5 style="color:gray">Building UI at Enterprise Scale with Web Components by EA Sports</h5>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/FJ2KEvzlyo4" frameborder="0" allowfullscreen></iframe>
+					<aside class="notes">
+					Cette présentation est plus une prise de conscience de l'impact des web components sur le développement web d'aujourd'hui et surtout de demain.
+					Pour comprendre les bénéfices de cette technologie dans le milieu professionnel, il n'y a qu'une seule vidéo à voir, un must have, même si cela utilise une autre technologie que celle que je vais décrire dans la deuxième partie 
+					Cas d'utilisation en entreprise par EA Sports (polymer)
+					</aside>
+				</section>
 				<section>
 					<h2>Web Components</h2>
 					<ul>
 						<li>Composants JavaScript normalisés pris en charge de manière native</li>
 						<li>S'exécute dans n'importe quel framework ou par son propre chef</li>
-						<li>Réponds au problème des composants partagés</li>
+						<li>Répond au problème des composants partagés</li>
 						<li>Propulsé par la spécification Custom Elements v1</li>
 					</ul>
 					<aside class="notes">
-						Les Web Components est une suite de différentes technologies vous permettant de créer des éléments personnalisés réutilisables - avec leurs fonctionnalités encapsulées à l'écart du reste de votre code  pour les utiliser dans vos applications Web.
+						Les Web Components est une suite de technologies connectées permettant de créer des éléments personnalisés réutilisables - avec leurs fonctionnalités encapsulées à l'écart du reste de votre code pour les utiliser dans vos applications Web.
+						
+						<br/>L'essentiel des discussions a tourné autour du DOM fantôme (shadow DOM), mais la technologie qui apportera sans doute le plus de transformations est ce qu'on appelle les custom elements (les éléments personnalisés), une méthode vous permettant de définir vos propres éléments, avec leurs comportements et propriétés.
 					</aside>
 				</section>
 				<section>
 					<!--<h2>Web Components (2)</h2>-->
-					<h2>4 technologies représentent les Web Components</h2>
+					<h2>4 technologies<br/>représentent<br/>les Web Components</h2>
 					<ul>						
 						<li>Custom Elements</li>
 						<li>Shadow DOM</li>
@@ -76,23 +91,50 @@
 						<li>HTML Imports</li>
 					</ul>
 					<aside class="notes">
-					    4 technologies normées derrière ce nom
-						<ul>
-						
-						<li>L'un des aspects les plus importants des composants web est la possibilité de créer des éléments personnalisés qui encapsulent bien vos fonctionnalités sur une page HTML, plutôt que de devoir se contenter d'une soupe de balises définissant des fonctionnalités personnalisées.</li>
-						<li>Le Shadow DOM permet d'encapsuler du JavaScript et du CSS au sein d'un Web Component. Le Shadow DOM fait en sorte que ces éléments soit séparés du DOM du document principal. Le Shadow DOM est utilisable seul, en dehors d'un Web component.
-						<br/>
-						Pourquoi rechercher à séparer le code du reste de la page ? Une des raisons est que sur des sites de tailles importantes, par exemple, si le CSS n'est pas correctement organisé, les styles de certains composants peuvent impacter d'autres parties du site bien que ce ne soit pas prévu, et vice-versa. Quand un site ou une application grandit, ce genre de chose est difficile a éviter.
-						</li>
-						<li>Vous pouvez utiliser les éléments "template" et "slot" pour créer un modèle flexible qui peut ensuite être utilisé pour remplir le shadow DOM d'un composant Web.
-						</li>
-						<li>HTML imports est un peu particulier car toujours en état Working Draft et un peu controversé par certains grandes entreprises
-Les importations HTML sont conçues pour être le mécanisme d'empaquetage (packaging) des composants Web, mais vous pouvez également utiliser les importations HTML seules.
-<br/>Vous importez un fichier HTML en utilisant une balise link dans un document HTML comme celui-ci:
-<br/><pre><code data-trim data-noescape class="html"><link rel="import" href="myfile.html"></code></pre>
-						</li>
-					</ul>
-					
+					    4 technologies normées rderrière ce nom							
+					</aside>
+				</section>
+				<section>
+					<h2>Custom Elements</h2>
+					<p>Crée des éléments personnalisés qui encapsulent vos fonctionnalités sur une page HTML</p>
+					<h5 style="color:gray">vs</h5>
+					<p>Se contenter d'une soupe de balises définissant des fonctionnalités personnalisées</p>
+					<aside class="notes">
+					L'un des aspects les plus importants des composants web est la possibilité de créer des éléments personnalisés qui encapsulent correctement vos fonctionnalités sur une page HTML, plutôt que de devoir se contenter d'une soupe de balises définissant des fonctionnalités personnalisées.
+					<br/>Cette technologie vous permet de définir vos propres éléments, avec leurs comportements et propriétés, émettant ou réagissant à des événements personnalisés à travers la page
+					</aside>
+				</section>
+				<section>
+					<h2>Shadow DOM</h2>
+					<p>permet d'encapsuler du JavaScript et du CSS au sein d'un Web Component afin que ces éléments soient séparés du DOM du document principal</p>
+					<aside class="notes">
+						Le Shadow DOM ou DOM fantôme permet d'encapsuler du JavaScript et du CSS au sein d'un Web Component. Le Shadow DOM fait en sorte que ces éléments soit séparés du DOM du document principal. 
+						<br/>Le Shadow DOM est utilisable seul, en dehors d'un Web component.
+						<br/>Pourquoi rechercher à séparer le code du reste de la page ? 
+						<br/>Une des raisons est que sur des sites de tailles importantes, par exemple, si le CSS n'est pas correctement organisé, les styles de certains composants peuvent impacter d'autres parties du site bien que ce ne soit pas prévu, et vice-versa. Quand un site ou une application grandit, ce genre de chose est difficile a éviter.
+					</aside>
+				</section>
+				<section>
+					<h2>HTML Templates</h2>
+					<p>met à disposition les éléments &lt;template&gt; et &lt;slot&gt; pour créer un modèle flexible de fragments de contenu, côté client, qui peut ensuite être utilisé pour remplir le shadow DOM d'un composant Web.</p>
+					<p>Au chargement de la page, le contenu des balises &lt;template&gt; ne sont pas afficher mais peuvent être instancié par la suite via JavaScript.</p>
+					<aside class="notes">
+					L'élément HTML &lt;template&gt; (ou Template Content ou modèle de contenu) est un mécanisme utilisé pour stocker du contenu côté client et qui ne doit pas être affiché lors du chargement de la page mais qui peut être instancié par la suite via JavaScript.
+
+					Cet élément est un fragment de contenu mis de côté pour être utilisé par la suite dans le document. Lorsque le moteur traite le contenu de l'élément &lt;template&gt; lors du chargement de la page, il ne fait que vérifier la validité du contenu, ce dernier n'est pas affiché
+					</aside>
+				</section>
+				<section>
+					<h2>HTML Imports</h2>
+					<p>est conçue à l'origine pour être le mécanisme d'empaquetage des composants Web.</p>
+					<p>Mais est également utiliser pour importer un fichier HTML seul en utilisant une balise &lt;link&gt;</p>
+					<pre><code data-trim data-noescape class="html">
+&lt;link rel="import" href="myfile.html" /&gt;
+</code></pre>
+					<aside class="notes">
+					Les importations HTML sont conçues pour être le mécanisme de packaging des composants Web, mais vous pouvez également utiliser les importations HTML seules.
+					HTML imports est un peu particulier car toujours en état Working Draft et est un peu controversé par certains grandes entreprises.
+					Vous importez un fichier HTML en utilisant une balise link dans un document HTML comme celui-ci
 					</aside>
 				</section>
 				<section>
@@ -136,7 +178,7 @@ document.registerElement('my-component', MyComponent);
 					<ul>
 						<li>Souhait de continuer à utiliser des fonctionnalités que seul les frameworks proposent</li>
 						<li>Désir de gérer facilement des bundles de composants</li>
-						<li>Utilisation d'un language typé comme TypeScript</li>
+						<li>Volonté d'utiliser un language typé comme TypeScript</li>
 					</ul>
 					<aside class="notes">
 						<ul>
@@ -165,14 +207,14 @@ document.registerElement('my-component', MyComponent);
 					</aside>
 				</section>
 				<section>
-					<h2>Pourquoi Stencil ? (1)</h2>
+					<h2>Pourquoi Stencil ?</h2>
 					<ul>
 						<li><b style="color:var(--present-color-li);">Performance</b> : Les frameworks traditionnels s'avèrent trop lourds pour désservir une expérience mobile exigeante via des applications Web progressives (PWA)</li>
 						<li style="margin-top:25px"><b style="color:var(--present-color-li);">Stabilité</b> : Désir d'utiliser les standards Web et éviter les réécritures constantes lors d'un changement de framework</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Pourquoi Stencil ? (2)</h2>
+					<h2>Pourquoi Stencil ? (suite)</h2>
 					<ul>			
 						<li><b style="color:var(--present-color-li);">Interopérabilité</b> : Capacité à créer des composants qui fonctionnent à l'identique à travers tous les principaux frameworks</li>
 						<li style="margin-top:25px"><b style="color:var(--present-color-li);">Familiarité</b> : fonctionnalités prisées par les frameworks JS mais dans un package plus léger et conforme aux normes</li>
@@ -213,7 +255,7 @@ document.registerElement('my-component', MyComponent);
 					</aside>
 				</section>			
 				<section>
-					<h2>Les composants compilés par Stencil ont (1)</h2>
+					<h2>Les composants compilés par Stencil ont</h2>
 					<ul>
 						<li><b style="color:var(--present-color-li);">Virtual DOM</b> : mises à jour DOM rapides sans les pièges communs de performance DOM</li>
 						<li><b style="color:var(--present-color-li);">Lazy Loading</b> : Par défaut, les composants sont chargés de manière asynchrone et peuvent être associés à d'autres composants</li>
@@ -228,7 +270,7 @@ document.registerElement('my-component', MyComponent);
 					</aside>
 				</section>
 				<section>
-					<h2>Les composants compilés par Stencil ont (2)</h2>
+					<h2>Les composants compilés par Stencil ont (suite)</h2>
 					<ul>
 						<li><b style="color:var(--present-color-li);">Rendu haute performance</b> : système de rendu asynchrone similaire à React Fiber</li>
 						<li><b style="color:var(--present-color-li);">JSX</b> : Système de markup populaire et familier lancé par React</li>
@@ -245,28 +287,23 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Stencil API</h2>
 					<ul>
-						<li><b style="color:var(--present-color-li);">@Component()</b>: set tag name and associated stylesheet (Sass or plain CSS)</li>
-						<li><b style="color:var(--present-color-li);">@Prop()</b>: Create a property on the component</li>
-						<li><b style="color:var(--present-color-li);">@State()</b>: local state that should be watched during change detection</li>
-						<li><b style="color:var(--present-color-li);">@Event()</b>: Trigger events on a component</li>
-						<li><b style="color:var(--present-color-li);">@Listen()</b>: listen for events fired from children</li>
-						<li><b style="color:var(--present-color-li);">@Element()</b>: grab the DOM element for this component</li>
+						<li><b style="color:var(--present-color-li);">@Component()</b> : Définir le nom du tag et la feuille de style associée (Sass ou plain CSS)</li>
+						<li><b style="color:var(--present-color-li);">@Prop()</b> : Créer une propriété sur le composant</li>
+						<li><b style="color:var(--present-color-li);">@State()</b> : État local qui doit être surveillé pendant la détection du changement</li>
+						<li><b style="color:var(--present-color-li);">@Event()</b> : Déclencher des événements sur un composant</li>
+						<li><b style="color:var(--present-color-li);">@Listen()</b> : Écouter les événements envoyés par ses enfants</li>
+						<li><b style="color:var(--present-color-li);">@Element()</b> : Récupèrer l'élément DOM pour ce composant</li>
 					</ul>
 				</section>
 				<section>
 					<h2>Demo</h2>
 					<p>
-						May the demo gods be with us
+						<a href="demo.html">Go</a>
 					</p>
 					<aside class="notes">
 					Un composant n'est pas forcément lié à une interaction graphique, il peut faire un fetch d'une requete ou appeler une autre api (web share, web payment)
 					</aside>
-				</section>
-				<section>
-					<h2>Cas d'utilisation en entreprise par EA Sports (polymer)</h2>
-					<h5>Building UI at Enterprise Scale with Web Components by EA Sports</h5>
-					<iframe width="560" height="315" src="https://www.youtube.com/watch?v=FJ2KEvzlyo4" frameborder="0" allowfullscreen></iframe>
-				</section>
+				</section>				
 				<section>
 					<h2>Comment Stencil est différent de X ?</h2>
 					<ul>
@@ -276,43 +313,16 @@ document.registerElement('my-component', MyComponent);
 					</ul>
 				</section>
 				<section>
-					<h2>Pour commencer</h2>
-					<pre><code data-trim data-noescape class="bash">
-						git clone https://github.com/ionic-team/stencil-starter.git my-app
-						cd my-app
-						npm install
-						npm start
-					</code></pre>
-				</section>
-				<section>
-					<h2>Where to go next?</h2>
-					<ul>
-						<li><a target="_blank" href="https://stenciljs.com/docs/my-first-component">Component Basics</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/templating">How Templating/JSX Works</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/decorators">Using Stencil's API</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/events">Sending and listening for Events</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/component-lifecycle">Component Lifecycle Hooks</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/stencil-config">Configuring Stencil Component Collections</a></li>
-					</ul>
-				</section>
-				<section>
-					<h2>Watch the Announcement</h2>
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/UfD-k7aHkQE" frameborder="0" allowfullscreen></iframe>
-				</section>
-				<section>
-					<h2>Community Resources</h2>
-					<ul>
-						<li><a target="_blank" href="https://github.com/ospatil/ng-components-integration">Using a Stencil-built component in Angular</a></li>
-						<li><a target="_blank" href="https://coryrylan.com/blog/create-your-first-web-component-with-stencil-js">Create your First Stencil Component</a></li>
-						<li><a target="_blank" href="https://alligator.io/stencil/getting-started/">Getting Started With Stencil</a></li>
-						<li><a target="_blank" href="https://medium.com/@sinedied/stencil-js-its-finally-time-for-vanilla-web-components-927d26b573e1">Stencil.js: It's finally time for vanilla web components!</a></li>
-					</ul>
-			</section>
-				<section>
 					<h2>Ressources</h2>
 					<ul>
 						<li><a href="http://stenciljs.com/">StencilJS.com</a></li>
 						<li><a href="https://github.com/ionic-team/stencil">github.com/ionic-team/stencil</a></li>
+						<li><a href="https://stencilcomponents.com">Stencilcomponents.com</a></li>
+						
+						<li><a target="_blank" href="https://github.com/ospatil/ng-components-integration">Using a Stencil-built component in Angular</a></li>
+						<li><a target="_blank" href="https://coryrylan.com/blog/create-your-first-web-component-with-stencil-js">Create your First Stencil Component</a></li>
+						<li><a target="_blank" href="https://alligator.io/stencil/getting-started/">Getting Started With Stencil</a></li>
+						<li><a target="_blank" href="https://medium.com/@sinedied/stencil-js-its-finally-time-for-vanilla-web-components-927d26b573e1">Stencil.js: It's finally time for vanilla web components!</a></li>
 					</ul>
 				</section>
 			</div>
