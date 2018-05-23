@@ -285,25 +285,202 @@ document.registerElement('my-component', MyComponent);
 					</aside>					
 				</section>
 				<section>
-					<h2>Stencil API</h2>
-					<ul>
-						<li><b style="color:var(--present-color-li);">@Component()</b> : Définir le nom du tag et la feuille de style associée (Sass ou plain CSS)</li>
-						<li><b style="color:var(--present-color-li);">@Prop()</b> : Créer une propriété sur le composant</li>
-						<li><b style="color:var(--present-color-li);">@State()</b> : État local qui doit être surveillé pendant la détection du changement</li>
-						<li><b style="color:var(--present-color-li);">@Event()</b> : Déclencher des événements sur un composant</li>
-						<li><b style="color:var(--present-color-li);">@Listen()</b> : Écouter les événements envoyés par ses enfants</li>
-						<li><b style="color:var(--present-color-li);">@Element()</b> : Récupèrer l'élément DOM pour ce composant</li>
+					<h2>Stencil API - Cycle de vie</h2>
+					<ul>							
+						<li><b style="color:var(--present-color-li);">componentWillLoad()</b> : Le composant est sur le point de charger et il n'a pas encore été rendu</li>
+						<li><b style="color:var(--present-color-li);">componentDidLoad()</b> : Le composant a été chargé et a déjà été rendu</li>				
+						<li><b style="color:var(--present-color-li);">componentWillUpdate()</b> : Le composant est sur le point d'être mis à jour et rendu.</li>
+						<li><b style="color:var(--present-color-li);">componentDidUpdate()</b> : Le composant vient de se re-rendre</li>
+						<li><b style="color:var(--present-color-li);">componentDidUnload()</b> : Le composant a déchargé et l'élément sera détruit</li>
 					</ul>
+					<aside class="notes">
+					componentWillLoad : Le composant est sur le point de charger et il n'a pas encore été rendu.   
+					<br/>C'est le meilleur endroit pour faire des mises à jour de données avant le premier rendu.   
+					<br/>componentWillLoad ne sera appelé qu'une seule fois.
+					
+					<br/><br/>componentDidLoad : Le composant a été chargé et a déjà été rendu.
+					<br/>La mise à jour des données dans cette méthode provoquera le rendu du composant.
+					<br/>componentDidLoad ne sera appelé qu'une seule fois.
+					
+					<br/><br/>componentWillUpdate : Le composant est sur le point d'être mis à jour et rendu.					
+					<br/>componentDidUpdate : Le composant vient de se re-rendre.
+					<br/>Appelé plusieurs fois tout au long de la vie du composant quand il se met à jour.
+					<br/>componentWillUpdate n'est pas appelé lors du premier rendu.
+					</aside>
 				</section>
 				<section>
-					<h2>Demo</h2>
-					<p>
-						<a href="demo.html">Go</a>
-					</p>
+					<h2>Stencil API - Décorateurs</h2>
+					<ul>
+						<li><b style="color:var(--present-color-li);">@Component()</b> : Définir le nom du tag et la feuille de style associée (Sass ou plain CSS)					
+						<pre><code data-trim data-noescape class="typescript">
+						import { Component } from '@stencil/core';
+
+						@Component({
+						  tag: 'todo-list',
+						  styleUrl: 'todo-list.scss',
+						  host: {
+						    theme: 'todo',
+						    role: 'list'
+						  }
+						})
+						export class TodoList {
+						  ...
+						}
+						</code></pre>
+						</li>
+											
+					</ul>
 					<aside class="notes">
-					Un composant n'est pas forcément lié à une interaction graphique, il peut faire un fetch d'une requete ou appeler une autre api (web share, web payment)
+					Chaque composant Stencil doit être décoré avec un décorateur @Component() du paquet @stencil/core. 
+					<br/>Dans le cas le plus simple, les développeurs doivent fournir un nom de balise HTML pour le composant. Souvent, un styleUrl est également utilisé, ou même styleUrls, où plusieurs feuilles de style différentes peuvent être fournies pour différents modes/thèmes d'application.
+					
+					<br/><br/>Le décorateur de composants a également une option hôte. Cela vous permet de définir des classes et des attributs CSS sur le composant que vous construisez.					
 					</aside>
-				</section>				
+				</section>
+				<section>
+					<h2>Stencil API - Décorateurs</h2>
+					<ul>				
+						<li><b style="color:var(--present-color-li);">@Prop()</b> : Créer une propriété sur le composant</li>
+						<li><b style="color:var(--present-color-li);">@State()</b> : État local qui est surveillé pour mettre à jour le rendu si détection d'un changement</li>						
+						<pre><code data-trim data-noescape class="typescript">
+						import { Prop, State } from '@stencil/core';
+						...
+						export class MyName {
+						
+						@Prop({ mutable: true }) name: string = 'oùestcharly';
+						
+						@State() completedTodos: Todo[];
+						...
+						</code></pre>						
+					</ul>
+					<aside class="notes">
+					Le décorateur @Prop() sont des attributs/propriétés exposés publiquement sur l'élément. Par défaut à chaque changement du décorateur, le composant est rendu de nouveau
+					<br/>Il est important de savoir que @Prop est par défaut immuable à l'intérieur de la logique du composant. 
+					<br/>Une fois qu'une valeur est définie par un utilisateur, le composant ne peut pas la mettre à jour en interne.
+					<br/>Cependant, il est possible d'autoriser explicitement la mutation suivante, comme dans l'exemple suivant:
+					<br/><br/>
+					Le décorateur @State() peut être utilisé pour gérer les données internes d'un composant. 
+					Cela signifie qu'un utilisateur ne peut pas modifier ces données de l'extérieur du composant, mais le composant peut le modifier comme il le souhaite. 
+					Toute modification apportée à une propriété @State () entraîne l'appel de la fonction de rendu des composants.
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Décorateurs</h2>
+					<ul>							
+						<li><b style="color:var(--present-color-li);">@Method()</b> : Expose une méthode à l'api public
+						<pre><code data-trim data-noescape class="typescript">
+						import { Method } from '@stencil/core';
+
+						export class TodoList {
+
+						  @Method()
+						  showPrompt() {
+						    // show a prompt
+						  }
+						}
+						</code></pre>
+						On peut appeler cette méthode comme cela :
+						<pre><code data-trim data-noescape class="typescript">
+						const todoListElt = document.querySelector('todo-list');
+						todoListElt.showPrompt();
+						</code></pre>
+						</li>				
+					</ul>
+					<aside class="notes">
+					Le décorateur @Method() est utilisé pour exposer des méthodes sur l'API publique. Les fonctions décorées avec le décorateur @Method() peuvent être appelées directement depuis l'élément.
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Décorateurs</h2>
+					<ul>								
+						<li><b style="color:var(--present-color-li);">@Watch()</b> : Lorsqu'un utilisateur met à jour une propriété, ce décorateur lancera la méthode à laquelle elle est attachée et transmettra la nouvelle et l'ancienne valeur		
+						<pre><code data-trim data-noescape class="typescript">
+						import { Prop, Watch } from '@stencil/core';
+
+						export class LoadingIndicator {
+						  @Prop() activated: boolean;
+
+						  @Watch('activated')
+						  watchHandler(newValue: boolean, oldValue: boolean) {
+						    console.log('New value is: ', newValue);
+						  }
+						}
+						</code></pre>					
+						</li>				
+					</ul>
+					<aside class="notes">					
+					Pour faire la validation d'une propriété, vous pouvez utiliser le décorateur @Watch()
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Décorateurs</h2>
+					<ul>			
+						<li><b style="color:var(--present-color-li);">@Element()</b> : Récupèrer l'élément DOM pour ce composant
+						<pre><code data-trim data-noescape class="typescript">
+						import { Element } from '@stencil/core';
+						
+						export class TodoList {
+
+						  @Element() todoListEl: HTMLElement;
+
+						  addClass(){
+						    this.todoListEl.classList.add('active');
+						  }
+						}
+						</code></pre>
+						</li>			
+					</ul>
+					<aside class="notes">
+					Le décorateur @Element() est comment avoir accès à l'élément host dans l'instance de classe. Cela renvoie une instance d'un HTMLElement, donc les méthodes / événements DOM standards peuvent être utilisés ici.
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Evenements</h2>
+					<ul>							
+						<li><b style="color:var(--present-color-li);">@Event()</b> : Déclencher des événements sur un composant
+						<pre><code data-trim data-noescape class="typescript">
+import { Event, EventEmitter } from '@stencil/core';
+
+...
+export class TodoList {
+
+  @Event() todoCompleted: EventEmitter;
+
+  todoCompletedHandler(todo: Todo) {
+    this.todoCompleted.emit(todo);
+  }
+}
+						</code></pre>
+						</li>			
+					</ul>
+					<aside class="notes">
+					Les composants peuvent émettre des données et des événements à l'aide du décorateur Event Emitter.
+					<br/><br/>Le code ci-dessus enverra un événement DOM personnalisé appelé todoCompleted.
+					</aside>
+				</section>
+				<section>
+					<h2>Stencil API - Evenements</h2>
+					<ul>							
+						<li><b style="color:var(--present-color-li);">@Listen()</b> : Écouter les événements envoyés par ses enfants
+						<pre><code data-trim data-noescape class="typescript">
+import { Listen } from '@stencil/core';
+
+...
+export class TodoApp {
+
+  @Listen('todoCompleted')
+  todoCompletedHandler(event: CustomEvent) {
+    console.log('Received todoCompleted event: ', event.detail);
+  }
+}
+						</code></pre>
+						</li>				
+					</ul>
+					<aside class="notes">
+					Le décorateur @Listen() permet de gérer les événements envoyés depuis @Events.
+					<br/><br/>Dans cet exemple, on suppose qu'un composant enfant, TodoList, émet un événement todoCompleted à l'aide de EventEmitter.
+					</aside>
+				</section>
 				<section>
 					<h2>Comment Stencil est différent de X ?</h2>
 					<ul>
@@ -312,6 +489,15 @@ document.registerElement('my-component', MyComponent);
 						<li><b>Vanilla Web Components</b> : Stencil fournit des fonctionnalités complexes venant des frameworks, comme si vous les aviez écrites vous-même dans des composants Web "vanilla".</li>
 					</ul>
 				</section>
+				<section>
+					<h2>Demo</h2>
+					<p>
+						<a href="stencil.html">C'est parti !</a>
+					</p>
+					<aside class="notes">
+					Un composant n'est pas forcément lié à une interaction graphique, il peut faire un fetch d'une requete ou appeler une autre api (web share, web payment)
+					</aside>
+				</section>								
 				<section>
 					<h2>Ressources</h2>
 					<ul>
