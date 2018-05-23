@@ -24,6 +24,12 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+		:root {
+		  --present-color-li: #36A0D9;
+		  }
+		</style>
+		
 	</head>
 	<body>
 		<div class="reveal">
@@ -57,30 +63,32 @@
 						<li>Propulsé par la spécification Custom Elements v1</li>
 					</ul>
 					<aside class="notes">
-						Les Web Components est une suite de différentes technologies vous permettant de créer des éléments personnalisés réutilisables - avec leurs fonctionnalités encapsulées à l'écart du reste de votre code - et de les utiliser dans vos applications Web.
+						Les Web Components est une suite de différentes technologies vous permettant de créer des éléments personnalisés réutilisables - avec leurs fonctionnalités encapsulées à l'écart du reste de votre code  pour les utiliser dans vos applications Web.
 					</aside>
 				</section>
 				<section>
 					<!--<h2>Web Components (2)</h2>-->
 					<h2>4 technologies représentent les Web Components</h2>
-					<ul>
-						<li>HTML Templates</li>
+					<ul>						
 						<li>Custom Elements</li>
 						<li>Shadow DOM</li>
+						<li>HTML Templates</li>
 						<li>HTML Imports</li>
 					</ul>
 					<aside class="notes">
 					    4 technologies normées derrière ce nom
 						<ul>
-						<li>Vous pouvez utiliser les éléments "template" et "slot" pour créer un modèle flexible qui peut ensuite être utilisé pour remplir le shadow DOM d'un composant Web.</li>
-						<li>L'un des aspects les plus importants des composants web est la possibilité de créer des éléments personnalisés qui encapsulent bien vos fonctionnalités sur une page HTML, plutôt que de devoir se contenter d'une soupe de balises définissant des fonctionnalités personnalisées. Cet article passe en revue les bases de l'utilisation d'éléments personnalisés.	</li>
+						
+						<li>L'un des aspects les plus importants des composants web est la possibilité de créer des éléments personnalisés qui encapsulent bien vos fonctionnalités sur une page HTML, plutôt que de devoir se contenter d'une soupe de balises définissant des fonctionnalités personnalisées.</li>
 						<li>Le Shadow DOM permet d'encapsuler du JavaScript et du CSS au sein d'un Web Component. Le Shadow DOM fait en sorte que ces éléments soit séparés du DOM du document principal. Le Shadow DOM est utilisable seul, en dehors d'un Web component.
 						<br/>
 						Pourquoi rechercher à séparer le code du reste de la page ? Une des raisons est que sur des sites de tailles importantes, par exemple, si le CSS n'est pas correctement organisé, les styles de certains composants peuvent impacter d'autres parties du site bien que ce ne soit pas prévu, et vice-versa. Quand un site ou une application grandit, ce genre de chose est difficile a éviter.
 						</li>
-						<li>HTML imports est un peu particulier car toujours en état Working Draft
-Les importations HTML sont conçues pour être le mécanisme d'empaquetage (packaging) des composants Web, mais vous pouvez également utiliser les importations HTML seules..
-<br/>Vous importez un fichier HTML en utilisant une balise <link> dans un document HTML comme celui-ci:
+						<li>Vous pouvez utiliser les éléments "template" et "slot" pour créer un modèle flexible qui peut ensuite être utilisé pour remplir le shadow DOM d'un composant Web.
+						</li>
+						<li>HTML imports est un peu particulier car toujours en état Working Draft et un peu controversé par certains grandes entreprises
+Les importations HTML sont conçues pour être le mécanisme d'empaquetage (packaging) des composants Web, mais vous pouvez également utiliser les importations HTML seules.
+<br/>Vous importez un fichier HTML en utilisant une balise link dans un document HTML comme celui-ci:
 <br/><pre><code data-trim data-noescape class="html"><link rel="import" href="myfile.html"></code></pre>
 						</li>
 					</ul>
@@ -148,25 +156,34 @@ document.registerElement('my-component', MyComponent);
 					<ul>
 						<li>Un compilateur qui génère des Custom Elements, une partie de la spécification des composants Web</li>
 						<li>Ce n'est pas un framework : la sortie est 100% conforme aux normes Custom Elements</li>
-						<li>Ajoute de puissantes fonctionnalités venant des frameworks aux Web Components</li>
-						<li>Créé et utilisé en production par l'équipe derrière le <a href="http://ionicframework.com/">Ionic Framework</a>. Ionic 4+ est construit dessus !</li>
+						<li>Ajoute de puissantes fonctionnalités venant du monde des frameworks aux Web Components</li>
+						<li>Créé et utilisé par l'équipe derrière <a href="http://ionicframework.com/">Ionic Framework</a>. Ionic 4+ et ionicons sont construits dessus !</li>
 					</ul>
 					<aside class="notes">
 					Un compilateur qui génère des éléments personnalisés, partie intégrante de la spécification des Web Components.
-					</aside
+					<br/>Ajoute de puissantes fonctionnalités venant du monde des frameworks aux Web Components
+					</aside>
 				</section>
 				<section>
-					<h2>Pourquoi Stencil ?</h2>
+					<h2>Pourquoi Stencil ? (1)</h2>
 					<ul>
-						<li><b>Performance</b> : Les frameworks traditionnels s'avèrent trop lourds pour désservir une expérience mobile exigeante via des applications Web progressives (PWA)</li>
-						<li><b>Stabilité</b> : Désir d'utiliser les standards Web et éviter les chutes constantes lors d'un changement de framework</li>
-						<li><b>Interopérabilité</b> : Capacité à créer des composants qui fonctionnent à l'identique à travers tous les principaux frameworks</li>
-						<li><b>Familiarité</b> : fonctionnalités prisées par les frameworks tendances mais dans un package plus léger et conforme aux normes</li>
+						<li><b style="color:var(--present-color-li);">Performance</b> : Les frameworks traditionnels s'avèrent trop lourds pour désservir une expérience mobile exigeante via des applications Web progressives (PWA)</li>
+						<li style="margin-top:25px"><b style="color:var(--present-color-li);">Stabilité</b> : Désir d'utiliser les standards Web et éviter les réécritures constantes lors d'un changement de framework</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Exemple d'un composant Stencil</h2>
-					<pre><code data-trim data-noescape class="typescript">
+					<h2>Pourquoi Stencil ? (2)</h2>
+					<ul>			
+						<li><b style="color:var(--present-color-li);">Interopérabilité</b> : Capacité à créer des composants qui fonctionnent à l'identique à travers tous les principaux frameworks</li>
+						<li style="margin-top:25px"><b style="color:var(--present-color-li);">Familiarité</b> : fonctionnalités prisées par les frameworks JS mais dans un package plus léger et conforme aux normes</li>
+					</ul>
+					<aside class="notes">
+					Le compilateur stencil n'est pas là pour remplacer l'utilisation de frameworks même si il capable de gérer un site ou une application professionnelle elle-même.
+					</aside>
+				</section>
+				<section>
+					<h2>Exemple d'un composant</h2>
+					<pre><code data-trim data-noescape class="typescript" style="min-height:480px">
 						import { Component, Prop } from '@stencil/core';
 
 						@Component({
@@ -184,18 +201,23 @@ document.registerElement('my-component', MyComponent);
 						    );
 						  }
 						}
+					</code></pre>	
+						<pre><code data-trim data-noescape class="html">
+&lt;my-name name="Ch'Big" /&gt;&lt;/my-name&gt;
 					</code></pre>
 					<aside class="notes">
-					La nomenclature est importante avec un dash pour les dissocier de HTML5			
-					<br/>Stencil utilise le meilleur d'angular (la déclaration d'une classe et ses décorateurs) et de react (JSX et render)
+					La nomenclature est importante avec un dash dans le nom du composant pour le dissocier des balises HTML5
+					<br/>Stencil utilise le meilleur d'angular (la déclaration d'une classe et ses décorateurs sous typescript) et de react (JSX et système de rendu performant)
+					<br/> On peut directement utiliser un fichier css pour remplcer sass ou n'importe quel autre moteur et tiré profit des CSS variables
+					<br/> Utilisation dans votre fichier HTML ou dans un autre composant JSX
 					</aside>
-				</section>
+				</section>			
 				<section>
 					<h2>Les composants compilés par Stencil ont (1)</h2>
 					<ul>
-						<li><b>Virtual DOM</b> : mises à jour DOM rapides sans les pièges communs de performance DOM</li>
-						<li><b>Lazy Loading</b> : Par défaut, les composants sont chargés de manière asynchrone et peuvent être associés à d'autres composants</li>
-						<li><b>Réactivité</b> : Mises à jour efficaces basées sur les changements de propriété et d'état</li>
+						<li><b style="color:var(--present-color-li);">Virtual DOM</b> : mises à jour DOM rapides sans les pièges communs de performance DOM</li>
+						<li><b style="color:var(--present-color-li);">Lazy Loading</b> : Par défaut, les composants sont chargés de manière asynchrone et peuvent être associés à d'autres composants</li>
+						<li><b style="color:var(--present-color-li);">Réactivité</b> : Mises à jour efficaces basées sur les changements de propriété et d'état</li>
 					</ul>
 					<aside class="notes">
 					<ul>
@@ -203,14 +225,14 @@ document.registerElement('my-component', MyComponent);
 						<li><b>Lazy Loading</b> (chargement paresseux) : By default components load asyncronously and can be bundled with related components</li>
 						<li><b>Réactivité</b> : Efficient updates based on property and state changes</li>
 					</ul>
-					</div>
+					</aside>
 				</section>
 				<section>
 					<h2>Les composants compilés par Stencil ont (2)</h2>
 					<ul>
-						<li><b>Rendu haute performance</b> : système de rendu asynchrone similaire à React Fiber</li>
-						<li><b>JSX</b> : Système de markup populaire et familier lancé par React</li>
-						<li><b>Server Side Rendering</b> : Hydratez les composants précompilés sur le serveur sans l'utilisation d'un navigateur sans tête (headless browser)</li>
+						<li><b style="color:var(--present-color-li);">Rendu haute performance</b> : système de rendu asynchrone similaire à React Fiber</li>
+						<li><b style="color:var(--present-color-li);">JSX</b> : Système de markup populaire et familier lancé par React</li>
+						<li><b style="color:var(--present-color-li);">Server Side Rendering</b> : Hydratez les composants précompilés sur le serveur sans l'utilisation d'un navigateur sans tête (headless browser)</li>
 					</ul>
 					<aside class="notes">
 						<ul>
@@ -218,35 +240,38 @@ document.registerElement('my-component', MyComponent);
 							<li><b>JSX</b> : Popular and familiar markup system pioneered by React</li>
 							<li><b>Server Side Rendering</b> : Hydrate pre-compiled components on the server without a headless browser : « navigateur sans tête »,  navigateur web sans interface graphique </li>
 						</ul>						
-					<aside>					
+					</aside>					
 				</section>
 				<section>
 					<h2>Stencil API</h2>
 					<ul>
-						<li><b>@Component()</b>: set tag name and associated stylesheet (Sass or plain CSS)</li>
-						<li><b>@Prop()</b>: Create a property on the component</li>
-						<li><b>@State()</b>: local state that should be watched during change detection</li>
-						<li><b>@Event()</b>: Trigger events on a component</li>
-						<li><b>@Listen()</b>: listen for events fired from children</li>
-						<li><b>@Element()</b>: grab the DOM element for this component</li>
+						<li><b style="color:var(--present-color-li);">@Component()</b>: set tag name and associated stylesheet (Sass or plain CSS)</li>
+						<li><b style="color:var(--present-color-li);">@Prop()</b>: Create a property on the component</li>
+						<li><b style="color:var(--present-color-li);">@State()</b>: local state that should be watched during change detection</li>
+						<li><b style="color:var(--present-color-li);">@Event()</b>: Trigger events on a component</li>
+						<li><b style="color:var(--present-color-li);">@Listen()</b>: listen for events fired from children</li>
+						<li><b style="color:var(--present-color-li);">@Element()</b>: grab the DOM element for this component</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Demo time</h2>
+					<h2>Demo</h2>
 					<p>
 						May the demo gods be with us
 					</p>
+					<aside class="notes">
+					Un composant n'est pas forcément lié à une interaction graphique, il peut faire un fetch d'une requete ou appeler une autre api (web share, web payment)
+					</aside>
 				</section>
 				<section>
-					<h2>How is Stencil different from X?</h2>
+					<h2>Comment Stencil est différent de X ?</h2>
 					<ul>
-						<li><b>Angular/React/Vue/etc.</b>: Stencil builds standards-based web components that run natively in the browser.</li>
-						<li><b>Polymer</b>: Stencil works primarily at build rather than runtime. Outputs vanilla web components. Opinionated around JSX, Virtual DOM, and other framework features.</li>
-						<li><b>Vanilla Web Components</b>: Stencil provides complicated framework features as if you wrote them yourself in vanilla Web Components.</li>
+						<li><b>Angular/React/Vue/Riot/etc.</b> : Stencil construit des composants Web standard qui s'exécutent nativement dans le navigateur.</li>
+						<li><b>Polymer</b> : Stencil fonctionne principalement à la compilation plutôt qu'à l'exécution. Produit des composants Web "vanilla". Pragmatique sur JSX, Virtual DOM et d'autres fonctionnalités du framework.</li>
+						<li><b>Vanilla Web Components</b> : Stencil fournit des fonctionnalités complexes venant des frameworks, comme si vous les aviez écrites vous-même dans des composants Web "vanilla".</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Getting Started</h2>
+					<h2>Pour commencer</h2>
 					<pre><code data-trim data-noescape class="bash">
 						git clone https://github.com/ionic-team/stencil-starter.git my-app
 						cd my-app
@@ -279,10 +304,9 @@ document.registerElement('my-component', MyComponent);
 					</ul>
 			</section>
 				<section>
-					<h2>Thanks!</h2>
+					<h2>Ressources</h2>
 					<ul>
 						<li><a href="http://stenciljs.com/">StencilJS.com</a></li>
-						<li><a href="https://twitter.com/stenciljs">@StencilJS on Twitter</a></li>
 						<li><a href="https://github.com/ionic-team/stencil">github.com/ionic-team/stencil</a></li>
 					</ul>
 				</section>
