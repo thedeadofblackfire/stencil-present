@@ -482,28 +482,50 @@ export class TodoApp {
 					</aside>
 				</section>
 				<section>
-					<h2>Comment Stencil est différent de X ?</h2>
+					<h2>Stencil vs X</h2>
 					<ul>
-						<li><b>Angular/React/Vue/Riot/etc.</b> : Stencil construit des composants Web standard qui s'exécutent nativement dans le navigateur.</li>
-						<li><b>Polymer</b> : Stencil fonctionne principalement à la compilation plutôt qu'à l'exécution. Produit des composants Web "vanilla". Pragmatique sur JSX, Virtual DOM et d'autres fonctionnalités du framework.</li>
-						<li><b>Vanilla Web Components</b> : Stencil fournit des fonctionnalités complexes venant des frameworks, comme si vous les aviez écrites vous-même dans des composants Web "vanilla".</li>
+						<li><b>Angular/React/Vue/...</b> : Stencil construit des composants Web standard qui s'exécutent nativement dans le navigateur.</li>
+						<li><b>Polymer</b> : Stencil fonctionne à la compilation plutôt qu'à l'exécution. Pragmatique sur JSX, Virtual DOM et d'autres fonctionnalités des frameworks.</li>
+						<li><b>Vanilla Web Components</b> : Stencil fournit des fonctionnalités complexes venant des frameworks, comme si vous les aviez écrites vous-même.</li>
 					</ul>
+					<aside class="notes">
+					Comment Stencil est différent de X ?
+					<br/>Stencil fonctionne principalement à la compilation plutôt qu'à l'exécution. Produit des composants Web "vanilla". Pragmatique sur JSX, Virtual DOM et d'autres fonctionnalités des frameworks
+					<br/><br/>Stencil fournit des fonctionnalités complexes venant des frameworks, comme si vous les aviez écrites vous-même dans des composants Web "vanilla".
+					</aside>
 				</section>
 				<section>
 					<h2>Demo</h2>
 					<p>
-						<a href="stencil.html">C'est parti !</a>
+						<a href="demo_stencil.html">C'est parti !</a>
 					</p>
 					<aside class="notes">
 					Un composant n'est pas forcément lié à une interaction graphique, il peut faire un fetch d'une requete ou appeler une autre api (web share, web payment)
+					<br/>Il est existe aussi un bundle pour construire une appli PWA avec ionic & stencil avec un score de 100% sur lighthouse
 					</aside>
-				</section>								
+				</section>						
+				<section data-background-iframe="https://stencil-fiber-demo.firebaseapp.com/perf.html" data-background-interactive>					
+					<aside class="notes">
+					The goal of this demo is to show smooth animations while at the same time updating 729 text nodes every second. Only one property is updated at the root node, which is then passed down through over 1,700 nodes every second. 
+					Additionally, user interactions, such as mouseenter and mouseleave, take precedence, yet should not interfer with animations and node updates. 
+					This demo was adopted from the React Fiber demo.	
+					</aside>
+				</section>	
+				<!--
+				<section>
+					<h2>Stencil Fiber Demo</h2>
+					<h5 style="color:gray">729 text nodes every second</h5>
+					<iframe width="560" height="315" src="https://stencil-fiber-demo.firebaseapp.com/perf.html" frameborder="0" allowfullscreen></iframe>				
+				</section>
+				-->
 				<section>
 					<h2>Ressources</h2>
 					<ul>
 						<li><a href="http://stenciljs.com/">StencilJS.com</a></li>
 						<li><a href="https://github.com/ionic-team/stencil">github.com/ionic-team/stencil</a></li>
+						<li><a href="https://github.com/ionic-team/ionic-pwa-toolkit">github.com/ionic-team/ionic-pwa-toolkit</a></li>
 						<li><a href="https://stencilcomponents.com">Stencilcomponents.com</a></li>
+						
 						
 						<li><a target="_blank" href="https://github.com/ospatil/ng-components-integration">Using a Stencil-built component in Angular</a></li>
 						<li><a target="_blank" href="https://coryrylan.com/blog/create-your-first-web-component-with-stencil-js">Create your First Stencil Component</a></li>
@@ -522,6 +544,7 @@ export class TodoApp {
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				viewDistance: 1,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
