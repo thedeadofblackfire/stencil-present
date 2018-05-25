@@ -11,6 +11,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
 		<link rel="stylesheet" href="css/reveal.css">
+		<!--<link rel="stylesheet" href="css/theme/white.css">-->
 		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
@@ -116,8 +117,8 @@
 				</section>
 				<section>
 					<h2>HTML Templates</h2>
-					<p>met à disposition les éléments &lt;template&gt; et &lt;slot&gt; pour créer un modèle flexible de fragments de contenu, côté client, qui peut ensuite être utilisé pour remplir le shadow DOM d'un composant Web.</p>
-					<p>Au chargement de la page, le contenu des balises &lt;template&gt; ne sont pas afficher mais peuvent être instancié par la suite via JavaScript.</p>
+					<p>met à disposition les éléments &lt;template&gt; et &lt;slot&gt; pour créer un modèle flexible de fragments de contenu, côté client, qui peut ensuite être utilisée pour remplir le shadow DOM d'un composant Web</p>
+					<p style="margin-top:40px">Au chargement de la page, le contenu de chaque balise &lt;template&gt; n'est pas affiché mais peut être instancié par la suite via JavaScript</p>
 					<aside class="notes">
 					L'élément HTML &lt;template&gt; (ou Template Content ou modèle de contenu) est un mécanisme utilisé pour stocker du contenu côté client et qui ne doit pas être affiché lors du chargement de la page mais qui peut être instancié par la suite via JavaScript.
 
@@ -126,8 +127,8 @@
 				</section>
 				<section>
 					<h2>HTML Imports</h2>
-					<p>est conçue à l'origine pour être le mécanisme d'empaquetage des composants Web.</p>
-					<p>Mais est également utiliser pour importer un fichier HTML seul en utilisant une balise &lt;link&gt;</p>
+					<p>est conçue à l'origine pour être le mécanisme d'empaquetage des composants Web</p>
+					<p style="margin-top:40px">Mais est également utilisée pour importer un fichier HTML seul en utilisant une balise &lt;link&gt;</p>
 					<pre><code data-trim data-noescape class="html">
 &lt;link rel="import" href="myfile.html" /&gt;
 </code></pre>
@@ -196,10 +197,10 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Stencil ? Késako</h2>
 					<ul>
-						<li>Un compilateur qui génère des Custom Elements, une partie de la spécification des composants Web</li>
-						<li style="margin-top:15px">Ce n'est pas un framework : la sortie est 100% conforme aux normes Custom Elements</li>
-						<li style="margin-top:15px">Ajoute de puissantes fonctionnalités venant du monde des frameworks aux Web Components</li>
-						<li style="margin-top:15px">Créé et utilisé par l'équipe derrière Ionic Framework. Ionic 4+ et ionicons sont construits dessus !</li>
+						<li>Un <b style="color:var(--present-color-li);">compilateur</b> qui génère des Custom Elements, une partie de la spécification des composants Web</li>
+						<li style="margin-top:15px"><b style="color:var(--present-color-li);">Ce n'est pas un framework</b> : la sortie est 100% conforme aux normes Custom Elements</li>
+						<li style="margin-top:15px">Ajoute de <b style="color:var(--present-color-li);">puissantes fonctionnalités</b> venant du monde des frameworks aux Web Components</li>
+						<li style="margin-top:15px">Créé et utilisé par l'équipe derrière Ionic Framework. <b style="color:var(--present-color-li);">Ionic 4+</b> et ionicons sont construits dessus !</li>
 					</ul>
 					<aside class="notes">
 					Un compilateur qui génère des éléments personnalisés, partie intégrante de la spécification des Web Components.
@@ -209,14 +210,14 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Pourquoi Stencil ?</h2>
 					<ul>
-						<li><b style="color:var(--present-color-li);">Performance</b> : Les frameworks traditionnels s'avèrent trop lourds pour désservir une expérience mobile exigeante via des applications Web progressives (PWA)</li>
-						<li style="margin-top:25px"><b style="color:var(--present-color-li);">Stabilité</b> : Désir d'utiliser les standards Web et éviter les réécritures constantes lors d'un changement de framework</li>
+						<li><b style="color:var(--present-color-li);">Performance</b> : les frameworks traditionnels s'avèrent trop lourds pour désservir une expérience mobile exigeante via des applications Web progressives (PWA)</li>
+						<li style="margin-top:25px"><b style="color:var(--present-color-li);">Stabilité</b> : désir d'utiliser les standards Web et éviter les réécritures constantes lors d'un changement de framework</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Pourquoi Stencil ? (suite)</h2>
+					<h2>Pourquoi Stencil ?</h2>
 					<ul>			
-						<li><b style="color:var(--present-color-li);">Interopérabilité</b> : Capacité à créer des composants qui fonctionnent à l'identique à travers tous les principaux frameworks</li>
+						<li><b style="color:var(--present-color-li);">Interopérabilité</b> : capacité à créer des composants qui fonctionnent à l'identique à travers tous les principaux frameworks</li>
 						<li style="margin-top:25px"><b style="color:var(--present-color-li);">Familiarité</b> : fonctionnalités prisées par les frameworks JS mais dans un package plus léger et conforme aux normes</li>
 					</ul>
 					<aside class="notes">
@@ -258,8 +259,8 @@ document.registerElement('my-component', MyComponent);
 					<h2>Les composants compilés par Stencil ont</h2>
 					<ul>
 						<li><b style="color:var(--present-color-li);">Virtual DOM</b> : mises à jour DOM rapides sans les pièges communs de performance DOM</li>
-						<li><b style="color:var(--present-color-li);">Lazy Loading</b> : Par défaut, les composants sont chargés de manière asynchrone et peuvent être associés à d'autres composants</li>
-						<li><b style="color:var(--present-color-li);">Réactivité</b> : Mises à jour efficaces basées sur les changements de propriété et d'état</li>
+						<li><b style="color:var(--present-color-li);">Lazy Loading</b> : par défaut, les composants sont chargés de manière asynchrone et peuvent être associés à d'autres composants</li>
+						<li><b style="color:var(--present-color-li);">Réactivité</b> : mises à jour efficaces basées sur les changements de propriété et d'état</li>
 					</ul>
 					<aside class="notes">
 					<ul>
@@ -270,11 +271,11 @@ document.registerElement('my-component', MyComponent);
 					</aside>
 				</section>
 				<section>
-					<h2>Les composants compilés par Stencil ont (suite)</h2>
+					<h2>Les composants compilés par Stencil ont</h2>
 					<ul>
 						<li><b style="color:var(--present-color-li);">Rendu haute performance</b> : système de rendu asynchrone similaire à React Fiber</li>
-						<li><b style="color:var(--present-color-li);">JSX</b> : Système de markup populaire et familier lancé par React</li>
-						<li><b style="color:var(--present-color-li);">Server Side Rendering</b> : Hydratez les composants précompilés sur le serveur sans l'utilisation d'un navigateur sans tête (headless browser)</li>
+						<li><b style="color:var(--present-color-li);">JSX</b> : système de markup populaire et familier lancé par React</li>
+						<li><b style="color:var(--present-color-li);">Server Side Rendering</b> : hydratez les composants précompilés sur le serveur sans l'utilisation d'un navigateur sans tête (headless browser)</li>
 					</ul>
 					<aside class="notes">
 						<ul>
@@ -285,7 +286,7 @@ document.registerElement('my-component', MyComponent);
 					</aside>					
 				</section>
 				<section>
-				<h2>Les fonctionnalités des frameworks inclus</h2>
+				<h2>Les fonctionnalités<br/>des frameworks inclus</h2>
 				<table style="zoom:0.8; margin-bottom: 40px" class="table table-striped table-dark">
     <thead>
         <tr>
@@ -338,22 +339,22 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Stencil API - Cycle de vie</h2>
 					<ul>							
-						<li><b style="color:var(--present-color-li);">componentWillLoad()</b> : Le composant est sur le point de charger et il n'a pas encore été rendu</li>
-						<li><b style="color:var(--present-color-li);">componentDidLoad()</b> : Le composant a été chargé et a déjà été rendu</li>				
-						<li><b style="color:var(--present-color-li);">componentWillUpdate()</b> : Le composant est sur le point d'être mis à jour et rendu.</li>
-						<li><b style="color:var(--present-color-li);">componentDidUpdate()</b> : Le composant vient d'effectuer son rendu</li>
-						<li><b style="color:var(--present-color-li);">componentDidUnload()</b> : Le composant a déchargé et l'élément sera détruit</li>
+						<li><b style="color:var(--present-color-li);">componentWillLoad()</b> : le composant est sur le point de charger et il n'a pas encore été rendu</li>
+						<li><b style="color:var(--present-color-li);">componentDidLoad()</b> : le composant a été chargé et a déjà été rendu</li>				
+						<li><b style="color:var(--present-color-li);">componentWillUpdate()</b> : le composant est sur le point d'être mis à jour et rendu.</li>
+						<li><b style="color:var(--present-color-li);">componentDidUpdate()</b> : le composant vient d'effectuer son rendu</li>
+						<li><b style="color:var(--present-color-li);">componentDidUnload()</b> : le composant a déchargé et l'élément sera détruit</li>
 					</ul>
 					<aside class="notes">
-					componentWillLoad : Le composant est sur le point de charger et il n'a pas encore été rendu.   
+					componentWillLoad : le composant est sur le point de charger et il n'a pas encore été rendu.   
 					<br/>C'est le meilleur endroit pour faire des mises à jour de données avant le premier rendu.   
 					<br/>componentWillLoad ne sera appelé qu'une seule fois.
 					
-					<br/><br/>componentDidLoad : Le composant a été chargé et a déjà été rendu.
+					<br/><br/>componentDidLoad : le composant a été chargé et a déjà été rendu.
 					<br/>La mise à jour des données dans cette méthode provoquera le rendu du composant.
 					<br/>componentDidLoad ne sera appelé qu'une seule fois.
 					
-					<br/><br/>componentWillUpdate : Le composant est sur le point d'être mis à jour et rendu.					
+					<br/><br/>componentWillUpdate : le composant est sur le point d'être mis à jour et rendu.					
 					<br/>componentDidUpdate : Le composant vient de se re-rendre.
 					<br/>Appelé plusieurs fois tout au long de la vie du composant quand il se met à jour.
 					<br/>componentWillUpdate n'est pas appelé lors du premier rendu.
@@ -362,7 +363,7 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Stencil API - Décorateurs</h2>
 					<ul>
-						<li><b style="color:var(--present-color-li);">@Component()</b> : Définir le nom du tag et la feuille de style associée (Sass ou plain CSS)					
+						<li><b style="color:var(--present-color-li);">@Component()</b> : définir le nom du tag et la feuille de style associée (Sass ou plain CSS)					
 						<pre><code data-trim data-noescape class="typescript">
 						import { Component } from '@stencil/core';
 
@@ -391,8 +392,8 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Stencil API - Décorateurs</h2>
 					<ul>				
-						<li><b style="color:var(--present-color-li);">@Prop()</b> : Créer une propriété sur le composant</li>
-						<li><b style="color:var(--present-color-li);">@State()</b> : État local qui est surveillé pour mettre à jour le rendu si détection d'un changement</li>						
+						<li><b style="color:var(--present-color-li);">@Prop()</b> : créer une propriété sur le composant</li>
+						<li><b style="color:var(--present-color-li);">@State()</b> : créer un état local et le surveiller pour mettre à jour le rendu si détection d'un changement</li>						
 						<pre><code data-trim data-noescape class="typescript">
 						import { Prop, State } from '@stencil/core';
 						...
@@ -418,7 +419,7 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Stencil API - Décorateurs</h2>
 					<ul>							
-						<li><b style="color:var(--present-color-li);">@Method()</b> : Expose une méthode à l'api public
+						<li><b style="color:var(--present-color-li);">@Method()</b> : exposer une méthode à l'api public
 						<pre><code data-trim data-noescape class="typescript">
 						import { Method } from '@stencil/core';
 
@@ -444,7 +445,7 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Stencil API - Décorateurs</h2>
 					<ul>								
-						<li><b style="color:var(--present-color-li);">@Watch()</b> : Lorsqu'un utilisateur met à jour une propriété, ce décorateur lancera la méthode à laquelle elle est attachée et transmettra la nouvelle et l'ancienne valeur		
+						<li><b style="color:var(--present-color-li);">@Watch()</b> : lorsqu'un utilisateur met à jour une propriété, ce décorateur lancera la méthode à laquelle elle est attachée et transmettra la nouvelle et l'ancienne valeur		
 						<pre><code data-trim data-noescape class="typescript">
 						import { Prop, Watch } from '@stencil/core';
 
@@ -466,7 +467,7 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Stencil API - Décorateurs</h2>
 					<ul>			
-						<li><b style="color:var(--present-color-li);">@Element()</b> : Récupèrer l'élément DOM pour ce composant
+						<li><b style="color:var(--present-color-li);">@Element()</b> : récupèrer l'élément DOM pour ce composant
 						<pre><code data-trim data-noescape class="typescript">
 						import { Element } from '@stencil/core';
 						
@@ -488,7 +489,7 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Stencil API - Evenements</h2>
 					<ul>							
-						<li><b style="color:var(--present-color-li);">@Event()</b> : Déclencher des événements sur un composant
+						<li><b style="color:var(--present-color-li);">@Event()</b> : déclencher des événements sur un composant
 						<pre><code data-trim data-noescape class="typescript">
 import { Event, EventEmitter } from '@stencil/core';
 
@@ -512,7 +513,7 @@ export class TodoList {
 				<section>
 					<h2>Stencil API - Evenements</h2>
 					<ul>							
-						<li><b style="color:var(--present-color-li);">@Listen()</b> : Écouter les événements envoyés par ses enfants
+						<li><b style="color:var(--present-color-li);">@Listen()</b> : écouter les événements envoyés par ses enfants
 						<pre><code data-trim data-noescape class="typescript">
 import { Listen } from '@stencil/core';
 
